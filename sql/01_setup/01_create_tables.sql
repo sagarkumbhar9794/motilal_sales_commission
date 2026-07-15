@@ -12,7 +12,7 @@ CREATE OR REPLACE TABLE CLIENT_MASTER (
     account_status STRING,
     rm_id STRING,
     _loaded_at TIMESTAMP_NTZ DEFAULT CURRENT_TIMESTAMP(),
-    _file_name STRING DEFAULT METADATA$FILENAME
+    _file_name STRING
 );
 
 CREATE OR REPLACE TABLE HR_MASTER (
@@ -23,7 +23,7 @@ CREATE OR REPLACE TABLE HR_MASTER (
     date_of_leaving DATE,
     ctc FLOAT,
     _loaded_at TIMESTAMP_NTZ DEFAULT CURRENT_TIMESTAMP(),
-    _file_name STRING DEFAULT METADATA$FILENAME
+    _file_name STRING
 );
 
 -- Daily sales (wide revenue-by-channel table)
@@ -46,7 +46,7 @@ CREATE OR REPLACE TABLE SALES (
     total_revenue_housecall FLOAT,
     total_revenue FLOAT,
     _loaded_at TIMESTAMP_NTZ DEFAULT CURRENT_TIMESTAMP(),
-    _file_name STRING DEFAULT METADATA$FILENAME
+    _file_name STRING
 );
 -- IMPORTANT: verify these 17 column names/order against your actual sales_2026-06-20.csv
 -- header row before loading — this is inferred, not confirmed against the real header.
@@ -59,7 +59,7 @@ CREATE OR REPLACE TABLE IAP (
     client_id STRING,
     iap_amount FLOAT,
     _loaded_at TIMESTAMP_NTZ DEFAULT CURRENT_TIMESTAMP(),
-    _file_name STRING DEFAULT METADATA$FILENAME
+    _file_name STRING
 );
 
 CREATE OR REPLACE TABLE INSURANCE (
@@ -69,7 +69,7 @@ CREATE OR REPLACE TABLE INSURANCE (
     client_id STRING,
     insurance_amount FLOAT,
     _loaded_at TIMESTAMP_NTZ DEFAULT CURRENT_TIMESTAMP(),
-    _file_name STRING DEFAULT METADATA$FILENAME
+    _file_name STRING
 );
 
 CREATE OR REPLACE TABLE TGS (
@@ -79,7 +79,7 @@ CREATE OR REPLACE TABLE TGS (
     client_id STRING,
     tgs_amount FLOAT,
     _loaded_at TIMESTAMP_NTZ DEFAULT CURRENT_TIMESTAMP(),
-    _file_name STRING DEFAULT METADATA$FILENAME
+    _file_name STRING
 );
 
 CREATE OR REPLACE TABLE SIP (
@@ -90,7 +90,7 @@ CREATE OR REPLACE TABLE SIP (
     sip_status STRING,
     sip_amount FLOAT,
     _loaded_at TIMESTAMP_NTZ DEFAULT CURRENT_TIMESTAMP(),
-    _file_name STRING DEFAULT METADATA$FILENAME
+    _file_name STRING
 );
 
 -- Verify all 7 tables were created
