@@ -38,18 +38,16 @@ CREATE OR REPLACE TABLE SALES (
     delivery_equity_revenue_nonhousecall FLOAT,
     cash_intraday_revenue_housecall FLOAT,
     cash_intraday_revenue_nonhousecall FLOAT,
-    fno_revenue_housecall FLOAT,
     fno_revenue_nonhousecall FLOAT,
+    fno_revenue_housecall FLOAT,
     commodity_revenue_housecall FLOAT,
     commodity_revenue_nonhousecall FLOAT,
-    other_revenue FLOAT,
-    total_revenue_housecall FLOAT,
-    total_revenue FLOAT,
+    offline_revenue FLOAT,
+    online_revenue FLOAT,
+    net_revenue FLOAT,
     _loaded_at TIMESTAMP_NTZ DEFAULT CURRENT_TIMESTAMP(),
     _file_name STRING
 );
--- IMPORTANT: verify these 17 column names/order against your actual sales_2026-06-20.csv
--- header row before loading — this is inferred, not confirmed against the real header.
 
 -- Product-line feeds
 CREATE OR REPLACE TABLE IAP (

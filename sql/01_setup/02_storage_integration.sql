@@ -1,8 +1,8 @@
 use role accountadmin;
 
-create storage integration sales_s3_integration
-type = external_stage
-storage_provider = "S3"
-enabled = True
-storage_aws_role_arn = 'arn:aws:iam::467138365505:role/snowflake-s3-access-role'
-storage_allowed_locations = ('s3://mofslsales2026/sales-data-lake-sagar-2026/');
+CREATE STORAGE INTEGRATION SALES_S3_INTEGRATION
+  TYPE = EXTERNAL_STAGE
+  STORAGE_PROVIDER = 'S3'
+  ENABLED = TRUE
+  STORAGE_AWS_ROLE_ARN = 'arn:aws:iam::467138365505:role/snowflake-s3-access-role'
+  STORAGE_ALLOWED_LOCATIONS = ('s3://mofslsales2026/sales-data-lake-sagar-2026/')
