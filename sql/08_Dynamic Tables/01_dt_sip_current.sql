@@ -1,0 +1,13 @@
+-- sql/08_dynamic_tables/01_dt_sip_current.sql
+USE ROLE DE_ADMIN;
+USE SCHEMA SALES_DB.RAW;
+
+CREATE OR REPLACE DYNAMIC TABLE DT_SIP_CURRENT
+  TARGET_LAG = '5 minutes'
+  WAREHOUSE = COMPUTE_WH
+AS
+SELECT sip_id, date, rm_id, client_id, sip_status, sip_amount
+FROM SIP
+QUALIFY ROW_NUMBER() OVER (PARTITION BY sip_id ORDER BY date DESC) = 1;
+
+SELECT COUNT(*) FROM DT_SIP_CURRENT;
