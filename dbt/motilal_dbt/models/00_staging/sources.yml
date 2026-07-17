@@ -1,0 +1,15 @@
+version: 2
+
+sources:
+  - name: raw
+    database: SALES_DB
+    schema: RAW
+    tables:
+      - name: client_master
+      - name: hr_master
+      - name: sales
+      - name: iap
+      - name: insurance
+      - name: tgs
+      - name: sip
+      - name: sip_current_status

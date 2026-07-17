@@ -1,0 +1,6 @@
+product_type,description
+Sales,Core brokerage transaction revenue (equity/cash/FnO/commodity)
+SIP,Systematic Investment Plan contributions
+IAP,Investment Advisory Product transactions
+Insurance,Insurance product sales
+TGS,TGS product transactions

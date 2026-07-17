@@ -1,0 +1,1 @@
+SELECT * FROM {{ ref('product_type_seed') }}

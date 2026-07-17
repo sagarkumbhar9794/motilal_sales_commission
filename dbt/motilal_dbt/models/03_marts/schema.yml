@@ -1,0 +1,44 @@
+version: 2
+
+models:
+  - name: dim_client
+    description: "SCD2 dimension. One row per client per validity period."
+    columns:
+      - name: client_id
+        tests: [not_null]
+      - name: client_segment
+        tests:
+          - accepted_values:
+              values: ['Retail', 'HNI', 'Ultra HNI', 'Corporate']
+              config: {severity: warn}   # source has real blanks, allow warn not fail
+
+  - name: fct_sales_revenue
+    description: "Grain: one row per (transaction_id, product_line, channel)."
+    columns:
+      - name: transaction_id
+        tests: [not_null]
+      - name: revenue
+        tests:
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+
+  - name: fct_product_transactions
+    description: "Grain: one row per (product_txn_id, product_type)."
+    columns:
+      - name: product_type
+        tests:
+          - accepted_values:
+              values: ['SIP', 'IAP', 'Insurance', 'TGS']
+
+exposures:
+  - name: sales_streamlit_dashboard
+    type: dashboard
+    maturity: medium
+    url: "http://localhost:8501"
+    description: "Streamlit-in-Snowflake dashboard consuming fct_sales_revenue and fct_product_transactions."
+    depends_on:
+      - ref('fct_sales_revenue')
+      - ref('fct_product_transactions')
+    owner:
+      name: "Sagar"
+      email: "your-email@example.com"
